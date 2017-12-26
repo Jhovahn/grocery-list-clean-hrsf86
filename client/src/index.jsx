@@ -7,20 +7,18 @@ import AddGrocery from './components/AddGrocery.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      list: groceryList.groceryList
-    }
+    this.state = groceryList
 
   }
 
 
 
   render () {
-
+    console.log(this.state)
     return (
       <div>
         <div><AddGrocery/></div>
-        <div><GroceryList groceries={this.state.list}/></div>
+        <div><GroceryList groceries={groceryList.groceryList}/></div>
       </div>
     );
   }

@@ -10,46 +10,57 @@ class AddGrocery extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-
-
     handleInputChange(event) {
-      const target = event.target;
-      const name = target.name;
-      this.setState((prevState, props) => {
-        return {
-          quantity: prevState.counter + props.step}
-      })
-      console.log(this.state)
+        // const {currItems} = this.state;
+        const {newItem} = {test:1};
+
+        this.setState({
+          groceryList: [...this.state.groceryList, {id:1,quantity:Number(this.quantity.value), description:this.description.value}]
+        })
+
+
     }
 
     handleSubmit(event) {
       event.preventDefault()
+
     }
 
 
   render () {
     return (
+      <div>
+      <div>
+        <h2>GroceryList</h2>
+      </div>
       <form onSubmit={this.handleSubmit}>
         <label>
           Description:
             <input
               name="description"
               type="text"
-              value={this.state.description}/>
+              value={this.state.description}
+              ref={ input => this.description = input}
+              />
               {console.log("state:",this.state)}
-              {console.log(groceryList)}
+
         </label>
         <br/>
         <label>
           Quantity:
             <input
               name="quantity"
-              type="text"
+              type="integer"
               value={this.state.quantity}
+              ref={input => this.quantity = input}
               />
         </label>
         <input type="submit" onClick={this.handleInputChange}/>
       </form>
+      <div>
+        {() => this.state}
+      </div>
+      </div>
     );
   }
 }
